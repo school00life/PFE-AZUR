@@ -2,11 +2,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- checkout: self
-
 - script: |
-    cd $(System.DefaultWorkingDirectory)
-    cd PFE-AZUR   # Change directory to your project directory
     dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
@@ -20,4 +16,4 @@ steps:
     azureSubscription: 'Towards-AzurePortal'
     appType: 'webAppLinux'
     appName: 'pfe0app'
-    package: '$(System.DefaultWorkingDirectory)/PFE-AZUR/**/*.zip'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
